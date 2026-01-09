@@ -6,7 +6,7 @@ const register = async (req, res, next) => {
     const user = await userService.createUser(req.body);
     const tokens = generateTokens(user);
     await tokenService.saveToken({
-      userId: user._id,
+      user: user._id,
       token: tokens.refreshToken,
       expiresAt: new Date(
         Date.now() + 7 * 24 * 60 * 60 * 1000
@@ -43,7 +43,7 @@ const login = async (req, res, next) => {
 
     const tokens = generateTokens(user);
     await tokenService.saveToken({
-      userId: user._id,
+      user: user._id,
       token: tokens.refreshToken,
       expiresAt: new Date(
         Date.now() + 7 * 24 * 60 * 60 * 1000
