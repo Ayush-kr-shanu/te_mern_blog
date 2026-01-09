@@ -1,13 +1,16 @@
 const { Post } = require("../models");
 
 const create = async (postData) => {
+  console.log(postData)
   const post = await Post.create(postData);
   return post;
 };
 
 const getAllPosts = async (params) => {
   const { pageSize, pageNumber } = params;
-  const posts = await Post.find()
+  const posts = await Post.find({
+    deletedAt: null,
+  })
     .populate("author", "name email")
     .sort({ createdAt: -1 })
     .skip(pageNumber)

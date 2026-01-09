@@ -9,7 +9,6 @@ export default function CreatePost() {
     title: "",
     content: "",
     status: "published",
-    featured: false,
   })
 
   const submit = async (e) => {

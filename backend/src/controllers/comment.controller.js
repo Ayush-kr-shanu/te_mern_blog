@@ -31,9 +31,8 @@ const getCommentsByPost = async (req, res, next) => {
 
 const updateComment = async (req, res, next) => {
   try {
-    const comment = await commentService.update(id, {
-      cotent: req.body.content,
-    });
+    console.log(req.body)
+    const comment = await commentService.update(req.params.id, req.body);
 
     res.json({ success: true, data: comment });
   } catch (err) {
@@ -43,8 +42,8 @@ const updateComment = async (req, res, next) => {
 
 const deleteComment = async (req, res, next) => {
   try {
-    await commentService.update(req.id, {
-      deletedAd: new Date(),
+    await commentService.update(req.params.id, {
+      deletedAt: new Date(),
     });
     res.json({ success: true, message: "Comment deleted" });
   } catch (err) {

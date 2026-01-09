@@ -15,7 +15,7 @@ router.get("/:postId", auth, commentController.getCommentsByPost);
 router.put(
   "/edit/:id",
   auth,
-  validate(commentValidation.createComment),
+  validate(commentValidation.updateComment),
   commentController.updateComment
 );
 
