@@ -34,10 +34,6 @@ export default function Posts() {
   }
 
   useEffect(() => {
-    fetchPosts()
-  }, [])
-
-  useEffect(() => {
     if (!hasMore) return
 
     const observer = new IntersectionObserver(
@@ -58,7 +54,6 @@ export default function Posts() {
 
   return (
     <div className="max-w-5xl mx-auto px-4">
-      {/* Header */}
       <div className="flex justify-between items-center mb-6">
         <h2 className="text-2xl font-bold">Blog Posts</h2>
         {user && (
@@ -71,7 +66,6 @@ export default function Posts() {
         )}
       </div>
 
-      {/* Posts */}
       <div className="space-y-4">
         {posts.map(post => (
           <div
@@ -94,7 +88,6 @@ export default function Posts() {
         ))}
       </div>
 
-      {/* Loader / Observer */}
       {hasMore && (
         <div
           ref={observerRef}

@@ -22,6 +22,7 @@ router.get(
 
 router.put(
   "/:id",
+  activity("UPDATE_POST"),
   auth,
   validate(postValidation.updatePost),
   postController.updatePost

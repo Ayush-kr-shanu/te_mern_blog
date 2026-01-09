@@ -1,8 +1,12 @@
-const rateLimit = require("express-rate-limit")
+const rateLimit = require("express-rate-limit");
 
-exports.authRateLimiter = rateLimit({
-  windowMs: 15 * 60 * 1000, // 15 minutes
-  max: 20, // 20 requests per IP
-  message: "Too many attempts. Please try again later.",
-  skip: (req) => req.method === "OPTIONS", // Skip rate limiting for preflight requests
-})
+if (process.env.NODE_ENV === "test") {
+  module.exports = (req, res, next) => next();
+} else {
+  exports.authRateLimiter = rateLimit({
+    windowMs: 15 * 60 * 1000,
+    max: 20,
+    message: "Too many attempts. Please try again later.",
+    skip: (req) => req.method === "OPTIONS",
+  });
+}

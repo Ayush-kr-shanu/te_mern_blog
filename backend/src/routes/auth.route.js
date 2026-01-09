@@ -6,13 +6,13 @@ const { authValidation } = require("../validation");
 
 router.post(
   "/register",
-  rateLimit,
-  validate(authValidation.refreshToken),
+  // rateLimit,
+  validate(authValidation.register),
   authController.register
 );
 router.post(
   "/login",
-  rateLimit,
+  // rateLimit,
   validate(authValidation.login),
   authController.login
 );
