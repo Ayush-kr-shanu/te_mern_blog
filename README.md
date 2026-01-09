@@ -18,7 +18,6 @@ A full-stack **Blog Web Application** built using the **MERN Stack (MongoDB, Exp
 * **OAuth 2.0 social login**
 
   * Google
-  * Facebook
 * Environment-based configuration using `.env`
 
 ---
