@@ -11,7 +11,7 @@ describe("Auth API", () => {
       .post("/api/auth/register")
       .send({
         name: "Ayush",
-        email: "ayush@test.com",
+        email: "ayush1@test.com",
         password: "password123",
       });
 
@@ -23,14 +23,14 @@ describe("Auth API", () => {
   it("should login user", async () => {
     await request(app).post("/api/auth/register").send({
       name: "Ayush",
-      email: "ayush@test.com",
+      email: "ayush1@test.com",
       password: "password123",
     });
 
     const res = await request(app)
       .post("/api/auth/login")
       .send({
-        email: "ayush@test.com",
+        email: "ayush1@test.com",
         password: "password123",
       });
 
